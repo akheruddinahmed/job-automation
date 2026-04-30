@@ -1,8 +1,9 @@
 import google.generativeai as genai
 import datetime
+import os
 
-# 🔑 Add your API key here
-genai.configure(api_key="AIzaSyCroEVKoxl3tVQ4XatHmJLTJuCWBA1Ut64")
+# ✅ Correct way: read from environment variable
+genai.configure(api_key=os.getenv("API_KEY"))
 
 model = genai.GenerativeModel('gemini-1.5-flash')
 
