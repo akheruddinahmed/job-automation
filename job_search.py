@@ -2,7 +2,6 @@ import google.generativeai as genai
 import datetime
 import os
 
-# ✅ Correct way: read from environment variable
 genai.configure(api_key=os.getenv("API_KEY"))
 
 model = genai.GenerativeModel('gemini-1.5-flash-latest')
