@@ -1,14 +1,11 @@
-import google.generativeai as genai
+from google import genai
 import datetime
 import os
 
-# 🔐 Use API key from environment (GitHub Secrets or local env)
-genai.configure(api_key=os.getenv("API_KEY"))
+# 🔐 Configure client
+client = genai.Client(api_key=os.getenv("API_KEY"))
 
-# ✅ Use stable model (works with your current setup)
-model = genai.GenerativeModel('gemini-pro')
-
-# 🔍 Your job search prompt
+# 🔍 Prompt
 prompt = """
 Find job listings posted in the last 24 hours for a Java Full Stack Developer.
 
@@ -25,8 +22,11 @@ Requirements:
 """
 
 # 🚀 Generate response
-response = model.generate_content(prompt)
+response = client.models.generate_content(
+    model="gemini-1.5-flash",
+    contents=prompt
+)
 
-# 📅 Print result
+# 📅 Output
 print(f"\n📅 Report for {datetime.date.today()}:\n")
 print(response.text)
