@@ -5,7 +5,7 @@ import os
 # ✅ Correct way: read from environment variable
 genai.configure(api_key=os.getenv("API_KEY"))
 
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-1.5-flash-latest')
 
 prompt = """
 Find job listings posted in the last 24 hours for a Java Full Stack Developer.
