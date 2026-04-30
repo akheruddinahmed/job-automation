@@ -2,10 +2,9 @@ from google import genai
 import datetime
 import os
 
-# 🔐 Configure client
+# 🔐 API key from GitHub Secrets
 client = genai.Client(api_key=os.getenv("API_KEY"))
 
-# 🔍 Prompt
 prompt = """
 Find job listings posted in the last 24 hours for a Java Full Stack Developer.
 
@@ -21,12 +20,10 @@ Requirements:
 4. Prefer fresher / junior roles
 """
 
-# 🚀 Generate response
 response = client.models.generate_content(
-    model="gemini-1.5-flash",
+    model="gemini-2.0-flash",
     contents=prompt
 )
 
-# 📅 Output
 print(f"\n📅 Report for {datetime.date.today()}:\n")
 print(response.text)
